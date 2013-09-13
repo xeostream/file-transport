@@ -1,4 +1,3 @@
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,7 +10,6 @@ public class Client extends Socket {
 	private final static int THREAD_COUNT = 5;
 	private Socket client;
 	private FileInputStream fis;
-	private DataOutputStream dos;
 	private ObjectOutputStream oos;
 
 	public Client() {
@@ -20,7 +18,6 @@ public class Client extends Socket {
 				client = new Socket(SERVER_IP, SERVER_PORT);
 				File file = new File("test.txt");
 				fis = new FileInputStream(file);
-				dos = new DataOutputStream(client.getOutputStream());
 				oos = new ObjectOutputStream(client.getOutputStream());
 				
 				oos.writeUTF(file.getName());
